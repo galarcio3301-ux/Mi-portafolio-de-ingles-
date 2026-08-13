@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michell Andrea Galarcio — English Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F6F1E4;
+    --paper-line: #DCD3B8;
+    --ink: #223A5E;
+    --ink-soft: #3F5B84;
+    --red: #B5432C;
+    --red-soft: #D97757;
+    --margin: #C9BF9E;
+    --card: #FFFDF7;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        var(--paper) 0px,
+        var(--paper) 37px,
+        var(--paper-line) 38px
+      );
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before{
+    content:"";
+    position: fixed;
+    top:0; bottom:0;
+    left: 56px;
+    width: 2px;
+    background: var(--red-soft);
+    opacity: .35;
+    z-index: 0;
+  }
+  @media (max-width: 640px){
+    body::before{ left: 28px; }
+  }
+
+  .wrap{
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px 80px 80px;
+  }
+  @media (max-width: 640px){
+    .wrap{ padding: 0 18px 60px 48px; }
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    padding-top: 64px;
+    padding-bottom: 40px;
+  }
+
+  .tab{
+    display:inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--red);
+    background: var(--card);
+    border: 1px solid var(--margin);
+    border-bottom: none;
+    padding: 6px 14px;
+    border-radius: 8px 8px 0 0;
+    transform: rotate(-1.5deg);
+  }
+
+  .titleblock{
+    background: var(--card);
+    border: 1px solid var(--margin);
+    border-radius: 4px 14px 14px 14px;
+    padding: 32px 28px 26px;
+    box-shadow: 4px 6px 0 rgba(34,58,94,0.08);
+    position: relative;
+  }
+
+  h1{
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 7vw, 4.2rem);
+    line-height: .95;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+
+  .subtitle{
+    font-size: clamp(.95rem, 2vw, 1.1rem);
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .grade-stamp{
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--red);
+    border: 2.5px solid var(--red);
+    border-radius: 50%;
+    width: 76px; height: 76px;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    transform: rotate(8deg);
+    opacity: .85;
+    line-height: 1;
+  }
+  @media (max-width: 520px){
+    .grade-stamp{ width: 58px; height:58px; font-size: .8rem; top:12px; right:12px; }
+  }
+
+  /* ---------- SECTION LABELS ---------- */
+  .section{
+    margin-top: 48px;
+  }
+
+  .label{
+    display:inline-flex;
+    align-items:baseline;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+  .label::before{
+    content: "§";
+    font-size: 14px;
+  }
+  .label .es{
+    color: var(--margin);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 11px;
+  }
+
+  /* ---------- INTRO ---------- */
+  .intro-card{
+    background: var(--card);
+    border: 1px solid var(--margin);
+    border-radius: 4px 16px 16px 16px;
+    padding: 26px 28px;
+    box-shadow: 3px 4px 0 rgba(34,58,94,0.06);
+  }
+  .intro-card p{
+    margin: 0 0 12px;
+    line-height: 1.7;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .en{
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- TASK BOXES ---------- */
+  .stack{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .task-card{
+    background: var(--card);
+    border: 1px solid var(--margin);
+    border-radius: 4px 14px 14px 14px;
+    padding: 20px 20px 22px;
+    position: relative;
+    box-shadow: 2px 3px 0 rgba(34,58,94,0.06);
+  }
+  .task-card .pin{
+    position:absolute;
+    top: -8px; left: 16px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 2px 3px rgba(0,0,0,.25);
+  }
+  .task-card h3{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.08rem;
+    margin: 6px 0 4px;
+    color: var(--ink);
+    padding-right: 60px;
+  }
+  .task-card .meta{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    display:block;
+  }
+  .task-card .answer{
+    font-size: .96rem;
+    line-height: 1.7;
+    color: var(--ink);
+    white-space: pre-wrap;
+    border-top: 1px dashed var(--margin);
+    padding-top: 12px;
+  }
+
+  .task-card.placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color: var(--margin);
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    border-style: dashed;
+    min-height: 100px;
+  }
+
+  /* ---------- FORM (add / edit) ---------- */
+  .task-card input,
+  .task-card textarea{
+    width: 100%;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--margin);
+    border-radius: 6px;
+    padding: 9px 11px;
+    outline: none;
+    margin-bottom: 10px;
+  }
+  .task-card input:focus,
+  .task-card textarea:focus{
+    border-color: var(--red-soft);
+  }
+  .task-card input.e-title{
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .task-card input.e-meta{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .task-card textarea.e-answer{
+    font-size: .95rem;
+    line-height: 1.6;
+    min-height: 130px;
+    resize: vertical;
+  }
+
+  .actions{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .04em;
+    border: none;
+    border-radius: 20px;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: opacity .15s ease;
+  }
+  .btn:hover{ opacity:.85; }
+  .btn-primary{
+    background: var(--red);
+    color: var(--card);
+  }
+  .btn-ghost{
+    background: transparent;
+    border: 1px solid var(--margin);
+    color: var(--ink-soft);
+  }
+
+  .task-card .remove,
+  .task-card .edit-btn{
+    position: absolute;
+    top: 10px;
+    background: none;
+    border: none;
+    color: var(--margin);
+    line-height: 1;
+    cursor: pointer;
+    padding: 2px 4px;
+  }
+  .task-card .remove{ right: 10px; font-size: 17px; }
+  .task-card .edit-btn{ right: 34px; font-size: 14px; }
+  .task-card .remove:hover,
+  .task-card .edit-btn:hover{ color: var(--red); }
+
+  .add-btn-row{
+    margin-top: 18px;
+    text-align: center;
+  }
+  .btn-add{
+    background: var(--card);
+    border: 1.5px dashed var(--margin);
+    color: var(--ink-soft);
+    border-radius: 20px;
+    padding: 11px 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .btn-add:hover{ border-color: var(--red-soft); color: var(--red); }
+
+  .download-bar{
+    margin-top: 26px;
+    text-align: right;
+  }
+  .save-note{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--margin);
+    margin-top: 8px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top: 60px;
+    padding-top: 22px;
+    border-top: 2px dashed var(--margin);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    gap: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <span class="tab">Notebook · English Class</span>
+    <div class="titleblock">
+      <div class="grade-stamp">A+<br>✓</div>
+      <h1>Michell Andrea Galarcio</h1>
+      <p class="subtitle">English Homework Portfolio — Portafolio de tareas de Inglés</p>
+    </div>
+  </header>
+
+  <section class="section" id="about">
+    <div class="label">About me <span class="es">/ sobre mí</span></div>
+    <div class="intro-card">
+      <p><span class="en">Hello! My name is Michell Andrea Galarcio.</span> Este espacio reúne los trabajos, ensayos y ejercicios que he realizado para mi clase de inglés a lo largo del curso.</p>
+      <p><span class="en">This portfolio shows my progress learning English</span> — cada entrega refleja lo que he aprendido y en qué sigo practicando.</p>
+    </div>
+  </section>
+
+  <section class="section" id="assignments">
+    <div class="label">Assignments <span class="es">/ tareas resueltas</span></div>
+
+    <div class="stack" id="task-grid">
+
+      <div class="task-card" data-title="My First Job" data-meta="Week 01 · Writing" data-answer="Escribe aquí tu tarea resuelta...">
+        <button class="remove" onclick="this.closest('.task-card').remove()" title="Eliminar">×</button>
+        <button class="edit-btn" onclick="editTask(this.closest('.task-card'))" title="Editar">✎</button>
+        <div class="pin"></div>
+        <span class="meta">Week 01 · Writing</span>
+        <h3>My First Job</h3>
+        <div class="answer">Escribe aquí tu tarea resuelta...</div>
+      </div>
+
+    </div>
+
+    <div class="add-btn-row">
+      <button class="btn-add" onclick="addTask()">+ Agregar tarea resuelta</button>
+    </div>
+
+    <div class="download-bar">
+      <button class="btn btn-ghost" onclick="downloadPortfolio()">⬇ Descargar portafolio actualizado</button>
+      <p class="save-note">Descarga el archivo después de escribir tus tareas para guardar los cambios.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>English Portfolio · Michell Andrea Galarcio</span>
+  </footer>
+
+</div>
+
+<script>
+  const esc = s => (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+  function renderCard(card, title, meta, answer){
+    card.dataset.title = title;
+    card.dataset.meta = meta;
+    card.dataset.answer = answer;
+    card.innerHTML = `
+      <button class="remove" onclick="this.closest('.task-card').remove()" title="Eliminar">×</button>
+      <button class="edit-btn" onclick="editTask(this.closest('.task-card'))" title="Editar">✎</button>
+      <div class="pin"></div>
+      ${meta ? `<span class="meta">${esc(meta)}</span>` : ''}
+      <h3>${esc(title)}</h3>
+      <div class="answer">${esc(answer)}</div>
+    `;
+  }
+
+  function editTask(card){
+    const { title, meta, answer } = card.dataset;
+    card.innerHTML = `
+      <input type="text" class="e-title" value="${esc(title)}" placeholder="Título de la tarea">
+      <input type="text" class="e-meta" value="${esc(meta)}" placeholder="Semana / tipo (ej: Week 02 · Writing)">
+      <textarea class="e-answer" placeholder="Escribe aquí tu tarea resuelta...">${esc(answer)}</textarea>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="saveTask(this.closest('.task-card'))">Guardar</button>
+        <button class="btn btn-ghost" onclick="cancelEdit(this.closest('.task-card'))">Cancelar</button>
+      </div>
+    `;
+  }
+
+  function saveTask(card){
+    const title = card.querySelector('.e-title').value.trim() || 'Sin título';
+    const meta = card.querySelector('.e-meta').value.trim();
+    const answer = card.querySelector('.e-answer').value.trim();
+    renderCard(card, title, meta, answer);
+  }
+
+  function cancelEdit(card){
+    if(!card.dataset.title){
+      card.remove();
+      return;
+    }
+    renderCard(card, card.dataset.title, card.dataset.meta, card.dataset.answer);
+  }
+
+  function addTask(){
+    const card = document.createElement('div');
+    card.className = 'task-card';
+    card.innerHTML = `
+      <input type="text" class="e-title" value="" placeholder="Título de la tarea">
+      <input type="text" class="e-meta" value="" placeholder="Semana / tipo (ej: Week 02 · Writing)">
+      <textarea class="e-answer" placeholder="Escribe aquí tu tarea resuelta..."></textarea>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="saveTask(this.closest('.task-card'))">Guardar</button>
+        <button class="btn btn-ghost" onclick="cancelEdit(this.closest('.task-card'))">Cancelar</button>
+      </div>
+    `;
+    document.getElementById('task-grid').appendChild(card);
+    card.querySelector('.e-title').focus();
+  }
+
+  function downloadPortfolio(){
+    const clone = document.documentElement.cloneNode(true);
+    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([html], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'portfolio.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+</body>
+</html>
